@@ -1,5 +1,8 @@
 function getMessages (req, res) {
-    res.send('<ul><li>Hello</li></ul>');
+    res.render('messages', {
+        title: 'Messages to my Friends Julien',
+        friend: 'Elon Musk'
+    });
 };
 
 function postMessage (req, res) {

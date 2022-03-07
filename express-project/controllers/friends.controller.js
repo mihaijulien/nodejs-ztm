@@ -1,6 +1,6 @@
 const model = require('../models/friends.model');
 
-function postFriend(res, req) {
+function postFriend(req, res) {
     if(!req.body.name){
         res.status(400).json({
             error: 'Missing friend name'
