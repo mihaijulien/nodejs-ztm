@@ -16,6 +16,8 @@ app.use((req, res, next) => {
     console.log(`${req.method} ${req.url} ${delta}ms`);
 });
 
+// serve website with express by passing the dir of the files
+app.use('/site', express.static(path.join(__dirname, 'public'))); // http://localhost:3000/site/index.html
 app.use(express.json());
 
 app.use('/friends', friendRouter);
