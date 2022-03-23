@@ -10,6 +10,8 @@ If you get the following error when starting the app:
   fatal: true
 ```
 
-Execute the following query in MYSQL Workbench
+Execute the following query in MYSQL Workbench:
+
 `ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';`
-Where *root* as your user *localhost* as your URL and *password* as your password
+
+Where **root** as your user **localhost** as your URL and **password** as your password

@@ -14,3 +14,9 @@ connection.connect((err) => {
         console.log('Connected to MySQL Server!');
     }
 });
+
+connection.query('SELECT * from customers LIMIT 10', (err, rows) => {
+    if(err) throw err;
+    console.log('The data from customers table are: \n', rows);
+    connection.end();
+});
