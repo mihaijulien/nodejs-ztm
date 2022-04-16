@@ -19,10 +19,13 @@ Password - Password used while creating the PSQL server with docker
 2. `docker exec -it <PSQL-Container-ID> bash`
 3. Authenticate to start using as postgres user. `psql -h localhost -p 5432 -U postgres -W`
 4. Enter the password used while creating the PSQL server container.
+5. Create a database `create database knex_db;`
 
 
 ## Knex tutorial
 
 1. `npm install knex express body-parser pg`
-2. `knex migrate:make create_users_table` & edit knexfile with database connection details
+2. `knex init` && edit knexfile with database connection details
+3. `knex migrate:make users_table` && edit the exports.up and exports.down functions
+4. Create the table in our database: `knex migrate:latest`
 
