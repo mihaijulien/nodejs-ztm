@@ -3,8 +3,7 @@ const router = require('./routes');
 const port = process.ENV || 8000;
 const app = express();
 
-const userController = require('./controller/user');
-
+app.use(express.json());
 app.use(router);
 
 app.listen(port, () => {
