@@ -1,8 +1,8 @@
 exports.seed = async function (knex) {
   // truncate all existing tables
   await knex.raw('TRUNCATE TABLE "user" CASCADE');
-  await knex.raw('TRUNCATE TABLE channel CASCADE');
-  await knex.raw('TRUNCATE TABLE video CASCADE');
+  await knex.raw('TRUNCATE TABLE "channel" CASCADE');
+  await knex.raw('TRUNCATE TABLE "video" CASCADE');
 
   // insert seed data
   await knex('channel').insert([
