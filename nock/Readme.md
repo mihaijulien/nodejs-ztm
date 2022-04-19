@@ -1,3 +1,0 @@
-## nock
-
-`npm run test`

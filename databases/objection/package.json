@@ -1,0 +1,27 @@
+{
+  "name": "objection",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npm run migrate && npm run seed & nodemon index.js",
+    "make-migration-file": "knex migrate:make init --migrations-directory db/migrations",
+    "migrate:latest": "knex migrate:latest --knexfile ./db/knexfile.js",
+    "seed": "knex seed:run --knexfile=./db/knexfile.js",
+    "make-seed": "knex seed:make new-seed --knexfile ./db/knexfile.js",
+    "down": "knex migrate:down --knexfile ./db/knexfile.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.3",
+    "knex": "^1.0.7",
+    "objection": "^3.0.1",
+    "pg": "^8.7.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
