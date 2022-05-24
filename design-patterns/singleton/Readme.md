@@ -26,4 +26,10 @@ But the easier way to do it, in Node.js, is to just export the instance.
 module.exports = new Logger();
 ```
 
+and import it directly in the other files:
+
+```js
+var logger = require('./Logger');
+```
+
  The idea here is that when we run this file it will run once, create the new instance of the logger, and save it in the cache. That means that Node JS will automatically handle exporting the same instance of the logger to every other module that wants to consume it. 
