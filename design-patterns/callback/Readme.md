@@ -74,3 +74,15 @@ delay(2, () => {
 });
 
 ```
+A promise is an object that can be used to represent the eventual completion of an a asynchronous operation.
+Using a promise, we can write the exact same code as follows:
+
+```js
+var delay = (seconds) => new Promise((resolve, reject) => {
+    setTimeout(resolve, seconds*1000);
+});
+
+delay(1).then(()=> console.log('the delay has ended'));
+```
+
+When we invoke the delay function, our promise will wait one second, and then it will pass the successful resolution of the promise to a **.then()** method. So any handler that we wire up inside of this then method will be invoked next. 
