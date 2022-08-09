@@ -2,6 +2,7 @@ const express = require('express');
 const session = require('express-session');
 const redis = require('redis');
 const connectRedis = require('connect-redis');
+const router = require('./routes');
 
 const app = express();
 
@@ -35,40 +36,6 @@ app.use(session({
 }));
 
 
-// create an unprotected login endpoint
-app.post('/login', (req, res) => {
-    const {email, password} = req;
-
-    //check if the credentials are correct
-    // ...
-
-    // assume that the credentials are correct
-    req.session.clientId = 'abc123';
-    req.session.myNum = 5;
-
-    res.json('you are now logged in');
-
-});
-
-// plug in another middleware that will check if the user is authenticated or not
-// all requests that are plugged in after this middleware will only be accesible if the user is logged in
-app.use((req, res, next) => {
-    if(!req.session || req.session.clientId){
-        const err = new Error('You are not logged in');
-        err.statusCode = 401;
-        next(err);
-    }
-    next();
-});
-
-// plug in all routes that the user can only access if logged in
-app.get('/profile', 
-
-    // add a middle for authorization
-    (res, req, next) => { /* check if the user has suffiecient priviliges*/ next();},
-
-    (req, res) => {
-    res.json(req.session);
-});
+app.use(router);
 
 app.listen(8080, () => console.log('server is running on port 8080'));
