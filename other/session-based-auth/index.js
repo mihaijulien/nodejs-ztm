@@ -28,6 +28,7 @@ app.use(session({
     secret: 'mySecret',
     saveUninitialized: false,
     resave: false, 
+    name: 'sessionId',
     cookie: {
         secure: false, // if this is true, only transmit cookie through https
         httpOnly: true, // if true, it prevents clients like JS from reading the cookie
