@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const db = require("./app/models");
+const db = require("./models/index");
 
 const app = express();
 
@@ -29,6 +29,7 @@ db.sequelize.sync()
     res.json({ message: "Welcome to express w/ sequalize application." });
   });
   
+  require("./routes/tutorial.routes")(app);
   // set port, listen for requests
   const PORT = process.env.PORT || 8080;
   app.listen(PORT, () => {
