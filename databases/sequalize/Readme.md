@@ -9,7 +9,7 @@ Object Relational Mapping (ORM) is a technique of accessing a relational databas
 `docker-compose up`
 
 __Test MySQL server__
-```
+```sh
 docker ps
 
 docker exec -it *container_id* bash
@@ -27,7 +27,7 @@ This Sequelize Model represents tutorials table in MySQL database. These columns
 
 Run the app with `node server.js`
 The console shows:
-```
+```sh
 Server is running on port 8080.
 Executing (default): SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME = 'tutorials' AND TABLE_SCHEMA = 'testdb'
 Executing (default): CREATE TABLE IF NOT EXISTS `tutorials` (`id` INTEGER NOT NULL auto_increment , `title` VARCHAR(255), `description` VARCHAR(255), `published` TINYINT(1), `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB;
@@ -36,9 +36,9 @@ Synced db.
 ```
 - **Create a new Tutorial  using `POST /tutorials` API**
 
-*http://localhost:8080/api/tutorials*
+[http://localhost:8080/api/tutorials](http://localhost:8080/api/tutorials)
 
-```
+```json5
 {
     "title": "Title",
     "description": "desc",
