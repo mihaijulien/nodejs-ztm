@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+    mysql-db:
+        image: mysql:8.0
+        container_name: mysql-db
+        ports:
+            - "3306:3306"
+        restart: always
+        environment:
+            MYSQL_ROOT_PASSWORD: root # password of root account which has full permission on your SQL server
+            MYSQL_USER: julien # an additional user if you want more users than only root on your server
+            MYSQL_PASSWORD: 123@ # user password
+            MYSQL_ROOT_HOST: '%' # this option make us can connect to database with the root account
