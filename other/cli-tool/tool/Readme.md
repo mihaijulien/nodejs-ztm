@@ -22,3 +22,15 @@ cli-tool/testProject$ tool --start
 ]
 ```
 
+Using **arg** library:
+
+**arg** receives a configuration object which states which arguments it can receive and their type. Types can be booleans, strings, numbers, arrays, and counters. In our case, we'll use a boolean because we want to know whether the user passed the flag or not.
+```javascript
+console.log(args);
+```
+
+```shell
+cli-tool/testProject$ tool --start
+
+{ _: [], '--start': true }
+```
