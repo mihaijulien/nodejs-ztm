@@ -1,8 +1,11 @@
-We want to test our tool in the test project we created earlier. For that, we'll need to install our tool package in the testProject directory.We'll use npm link to simulate an installation.
+We want to test our tool in the test project we created earlier. For that, we'll need to install our tool package in the testProject directory. We'll use npm link to simulate an installation.
 
 ```bash
-cd ../testProject
-npm link tool
+cli-tool$ cd tool
+cli-tool/tool$ npm link
+
+cli-tool$ cd ../testProject
+cli-tool/testProject$ npm link tool
 ```
 
     When you run npm link in a module’s root directory, npm creates a symbolic link from your “global node_modules” directory to the local module’s directory.
