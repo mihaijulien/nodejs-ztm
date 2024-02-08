@@ -34,3 +34,10 @@ cli-tool/testProject$ tool --start
 
 { _: [], '--start': true }
 ```
+
+### Developer Experience
+
+Such as UX is a loading-bearing column in visual applications, Developer Experience, or DX for short, is one when creating tools for developers.
+DX has many manifestations such as delightfulness when using the tool, better error messages, less guessing, good docs, and snappiness. In the end, DX boils down to **maximizing value** and **minimizing wasted time**.
+
+In our tool project, install the **chalk** package(npm i chalk). chalk lets us add colors to our console.log statements which will help make our output clearer.
