@@ -10,13 +10,13 @@ function Git(name){
 
 function Commit(id, message) {
   this.id = id;
+  this.parent = parent;
   this.message = message;
   
 }
 
 Git.prototype.commit = function(message) {
-  var commit = new Commit(++this.lastCommitId, message);
-  return commit;
+  var commit = new Commit(++this.lastCommitId, this.HEAD, message);
   this.HEAD = commit;
 
   return commit;
