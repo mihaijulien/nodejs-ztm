@@ -10,8 +10,12 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "tool": {
+    "port": 9999
+  },
   "dependencies": {
     "arg": "5.0.2",
-    "chalk": "4.0.0"
+    "chalk": "4.0.0",
+    "pkg-up": "4.0.0"
   }
 }
