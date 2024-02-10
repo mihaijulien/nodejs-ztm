@@ -1,7 +1,8 @@
 function Git(name){
     this.name = name; // Repo name
     this.lastCommitId = -1; // Keep track of last commit id.
-    this.HEAD = null; // Reference to last Commit.
+    var master = new Branch("master", null); // null is passed as we don't have any commit yet.
+    this.HEAD = master; // HEAD points to current branch.
 }
 
 // var repo = new Git("my-repo");
@@ -17,7 +18,7 @@ function Commit(id, message) {
 
 Git.prototype.commit = function(message) {
   var commit = new Commit(++this.lastCommitId, this.HEAD, message);
-  this.HEAD = commit;
+  this.HEAD.commit = commit;
 
   return commit;
 };
@@ -27,6 +28,11 @@ Git.prototype.commit = function(message) {
 // Actual command:
 // > git commit -m "Make commit work"
 
+function Branch(name, commit) {
+  this.name = name;
+  this.commit = commit;
+}
+
 
 Git.prototype.log = function() {
     var history = []; // array of commits in reverse order.
@@ -35,7 +41,7 @@ Git.prototype.log = function() {
     // 2. Go back tracing to the first commit
     // 3. Push in `history`
     // Start from HEAD
-    var commit = this.HEAD,
+    var commit = this.HEAD.commit,
     history = [];
 
     while (commit) {
