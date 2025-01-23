@@ -1,0 +1,19 @@
+{
+  "name": "cache-manager",
+  "version": "1.0.0",
+  "description": "Caching example",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "jest"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cache-manager": "^6.4.0",
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
