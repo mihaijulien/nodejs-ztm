@@ -10,7 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "cache-manager": "^6.4.0",
+    "cache-manager": "5.4.0",
     "express": "^4.21.2"
   },
   "devDependencies": {

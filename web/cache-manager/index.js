@@ -1,42 +1,50 @@
 'use strict';
 
-const { createCache } = require('cache-manager');
+const { caching } = require('cache-manager');
 const express = require('express');
-
-// Single store with memory cache
-const cache = createCache({
-  ttl: 60000,  // Time-to-live (TTL) 1 minute
-  max: 100     // Max number of items in the cache
-});
 
 const app = express();
 const port = 3000;
 
-app.get('/test', (req, res) => {
-  res.send('test endpoint');
-});
+let cache;
 
-app.get('/cached-test', async (req, res) => {
-  const key = 'cached-test-endpoint';
+(async () => {
 
-  try {
-    const cachedValue = await cache.get(key);
+  // Single store with memory cache
+  cache = await caching('memory', {
+    max: 100, // Max number of items in the cache
+    ttl: 10 * 1000, // Time-to-live (TTL) 1 minute
+  });
 
-    if (cachedValue) {
-      return res.send(`From cache: ${cachedValue}`);
-    } else {
-      const value = 'cached-test endpoint';
-      await cache.set(key, value);
-      return res.send(`New request`);
+  app.get('/test', (req, res) => {
+    res.send('test endpoint');
+  });
+
+  app.get('/cached-test', async (req, res) => {
+    const key = 'cached-test-endpoint';
+
+    try {
+      const cachedValue = await cache.get(key);
+
+      if (cachedValue) {
+        // get the keys that were set in the cache
+        console.log(await cache.store.keys());
+        return res.send(`From cache: ${cachedValue}`);
+      } else {
+        const value = 'cached-test endpoint';
+        await cache.set(key, value);
+        await cache.set('key2', 'julien');
+        return res.send(`New request`);
+      }
+    } catch (err) {
+      return res.status(500).send('Error fetching from cache');
     }
-  } catch (err) {
-    return res.status(500).send('Error fetching from cache');
-  }
-});
+  });
 
-app.listen(port, () => {
-  console.log(`Listening on port ${port}`);
-});
+  app.listen(port, () => {
+    console.log(`Listening on port ${port}`);
+  });
+})();
 
 module.exports = {
   cache
